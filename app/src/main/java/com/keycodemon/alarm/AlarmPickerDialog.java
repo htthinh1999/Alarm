@@ -1,11 +1,9 @@
 package com.keycodemon.alarm;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +11,17 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.Fragment;
 
 public class AlarmPickerDialog extends AppCompatDialogFragment {
 
     TimePicker alarmPicker;
     AlarmPickerListener alarmPickerListener;
+
+    public Integer ID = null;
+
+    public AlarmPickerDialog(){}
+    public AlarmPickerDialog(Integer id){ID = id;}
 
     @NonNull
     @Override
@@ -43,7 +44,7 @@ public class AlarmPickerDialog extends AppCompatDialogFragment {
                         // Pad left hour and minute with '0'
                         String hour = String.format("%02d", alarmPicker.getHour());
                         String minute = String.format("%02d", alarmPicker.getMinute());
-                        alarmPickerListener.AddAlarmTime(hour, minute);
+                        alarmPickerListener.AddAlarmTime(hour, minute, ID);
                     }
                 });
 
@@ -65,6 +66,6 @@ public class AlarmPickerDialog extends AppCompatDialogFragment {
     }
 
     public interface AlarmPickerListener{
-        void AddAlarmTime(String hour, String minute);
+        void AddAlarmTime(String hour, String minute, Integer id);
     }
 }

@@ -2,14 +2,12 @@ package com.keycodemon.alarm;
 
 public class AlarmTimeItem implements Comparable{
     public String Time;
-    public String Days;
     public boolean Enable;
     public boolean[] DaysChose;
 
-    public AlarmTimeItem(String time, String days, boolean enable){
-        this.Time = time;
-        this.Days = days;
-        this.Enable = enable;
+    public AlarmTimeItem(String time, boolean enable){
+        Time = time;
+        Enable = enable;
         DaysChose = new boolean[7];
     }
 
